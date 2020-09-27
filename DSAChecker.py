@@ -132,7 +132,7 @@ def performUpdate():
     global action_choosen
 
     # this should point at the DSA login page
-    launchPage = 'https://driverpracticaltest.direct.gov.uk/login'
+    launchPage = 'https://driverpracticaltest.dvsa.gov.uk/login'
 
     print('[%s]' % (time.strftime('%Y-%m-%d @ %H:%M'),))
     print('---> Starting update...')
@@ -165,7 +165,7 @@ def performUpdate():
     dateChangeURL = launcher.html.find(id="date-time-change").get('href')
     # example URL: href="/manage?execution=e1s1&amp;csrftoken=hIRXetGR5YAOdERH7aTLi14fHfOqnOgt&amp;_eventId=editTestDateTime"
     # i am probably screwing up the POST bit on the forms
-    dateChangeURL = 'https://driverpracticaltest.direct.gov.uk' + dateChangeURL
+    dateChangeURL = 'https://driverpracticaltest.dvsa.gov.uk' + dateChangeURL
 
     slotPickingPage = Page(dateChangeURL, cookieJar)
     slotPickingPage.fields = launcher.fields
@@ -173,7 +173,7 @@ def performUpdate():
     slotPickingPage.connect(agent)
 
     e1s2URL = slotPickingPage.html.form.get('action')
-    e1s2URL = 'https://driverpracticaltest.direct.gov.uk' + e1s2URL
+    e1s2URL = 'https://driverpracticaltest.dvsa.gov.uk' + e1s2URL
     datePickerPage = Page(e1s2URL, cookieJar)
 
     datePickerPage.fields['testChoice'] = 'ASAP'
